@@ -12,12 +12,33 @@ class MenuCell:UICollectionViewCell {
     
     static let identifier = String(describing:MenuCell.self)
     
+    var categoryName: UILabel = {
+       let lb = UILabel()
+        lb.font = .systemFont(ofSize: 52, weight: .regular)
+        lb.textColor = .white
+        return lb
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    func setUI(){
+        contentView.addSubview(categoryName)
+        setConstraints()
+    }
+    
+    func setConstraints(){
+        categoryName.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(64)
+            
+        }
     }
     
 }
