@@ -31,7 +31,6 @@ class MenuCell:UICollectionViewCell {
     func setUI(){
         contentView.addSubview(categoryName)
         setConstraints()
-        
     }
     
     func setConstraints(){
