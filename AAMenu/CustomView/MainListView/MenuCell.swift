@@ -12,7 +12,7 @@ class MenuCell:UICollectionViewCell {
     
     static let identifier = String(describing:MenuCell.self)
     
-    var categoryName: UILabel = {
+    var menuName: UILabel = {
        let lb = UILabel()
         lb.font = .systemFont(ofSize: 52, weight: .regular)
         lb.textColor = .white
@@ -29,12 +29,12 @@ class MenuCell:UICollectionViewCell {
     }
     
     func setUI(){
-        contentView.addSubview(categoryName)
+        contentView.addSubview(menuName)
         setConstraints()
     }
     
     func setConstraints(){
-        categoryName.snp.makeConstraints {
+        menuName.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(64)
             

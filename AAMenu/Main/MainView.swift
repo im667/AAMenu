@@ -13,9 +13,16 @@ class MainView: BaseView {
     var category = CategoryView()
     var menuList = MenuListView()
     
+    var button: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .blue
+        btn.setTitle("추가", for: .normal)
+        return btn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-       
+        self.backgroundColor = .darkGray
     }
     
     required init?(coder: NSCoder) {
@@ -23,20 +30,28 @@ class MainView: BaseView {
     }
     
     override func setUI() {
-        [category,menuList].forEach { view in
+        [category,menuList,button].forEach { view in
             self.addSubview(view)
         }
+     
     }
     
     override func setConstraints() {
         category.snp.makeConstraints{
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(100)
+            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(80)
         }
         menuList.snp.makeConstraints {
             $0.top.equalTo(category.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
             
+        }
+        button.snp.makeConstraints {
+            $0.trailing.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.height.equalTo(40)
+            $0.width.equalTo(40)
         }
     }
 

@@ -11,11 +11,11 @@ import SnapKit
 class CategoryView: BaseView {
     
     var categoryCollectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = CategoryCollectionVeiwLayout()
         layout.scrollDirection = .horizontal
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .darkGray
+        cv.backgroundColor = .black
         return cv
     }()
     
