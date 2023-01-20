@@ -36,6 +36,7 @@ class TestRealmAlert: UIViewController {
         RealmManager.shared.addMenu(menuInfo: object)
         let realm = try!Realm()
         print(realm.objects(MenuData.self).count)
+        //dd
     }
     
 }
