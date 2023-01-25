@@ -34,4 +34,13 @@ public class RealmManager {
             .disposed(by: DisposeBag())
     }
     
+    func getFilterMenu(category:[String])->Results<MenuData> {
+        var menuList = realm.objects(MenuData.self)
+        menuList = menuList
+            .filter("category IN %@", category)
+        
+        return menuList
+    }
+    
+    
 }

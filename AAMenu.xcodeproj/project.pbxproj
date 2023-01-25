@@ -23,6 +23,9 @@
 		676264802973D2A50014D092 /* TestRealmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762647F2973D2A40014D092 /* TestRealmView.swift */; };
 		67626482297B0B870014D092 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67626481297B0B870014D092 /* RealmManager.swift */; };
 		67626486297B17AE0014D092 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 67626485297B17AE0014D092 /* RxRealm */; };
+		67626489297E67CA0014D092 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67626488297E67CA0014D092 /* UserDefaults.swift */; };
+		6762648C297E69BE0014D092 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762648B297E69BE0014D092 /* CategoryManager.swift */; };
+		6762648F297E74910014D092 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 6762648E297E74910014D092 /* DropDown */; };
 		6772F04D294639A100F0B7DA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6772F04C294639A100F0B7DA /* Realm */; };
 		6772F04F294639A100F0B7DA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6772F04E294639A100F0B7DA /* RealmSwift */; };
 		67C3F192293657DB00D2D9D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C3F191293657DB00D2D9D7 /* AppDelegate.swift */; };
@@ -46,6 +49,8 @@
 		6762647D2973D2670014D092 /* TestRealmAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRealmAlert.swift; sourceTree = "<group>"; };
 		6762647F2973D2A40014D092 /* TestRealmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRealmView.swift; sourceTree = "<group>"; };
 		67626481297B0B870014D092 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		67626488297E67CA0014D092 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		6762648B297E69BE0014D092 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		67C3F18E293657DB00D2D9D7 /* AAMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C3F191293657DB00D2D9D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67C3F193293657DB00D2D9D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 				6772F04F294639A100F0B7DA /* RealmSwift in Frameworks */,
 				6772F04D294639A100F0B7DA /* Realm in Frameworks */,
 				67626461294DD7F90014D092 /* RxSwift in Frameworks */,
+				6762648F297E74910014D092 /* DropDown in Frameworks */,
 				6762645F294DD7F90014D092 /* RxCocoa in Frameworks */,
 				674CE36029448F33008B2D6D /* SnapKit in Frameworks */,
 			);
@@ -90,6 +96,8 @@
 		674CE36329448FDB008B2D6D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				6762647D2973D2670014D092 /* TestRealmAlert.swift */,
+				6762647F2973D2A40014D092 /* TestRealmView.swift */,
 				67C3F195293657DB00D2D9D7 /* MainViewController.swift */,
 				67626462294DDC4E0014D092 /* MainViewModel.swift */,
 				674CE36429449217008B2D6D /* MainView.swift */,
@@ -103,8 +111,6 @@
 				674CE3692944970F008B2D6D /* CategoryCell.swift */,
 				6762647B2972BC0F0014D092 /* CategoryCollectionViewLayout.swift */,
 				674CE3732944983B008B2D6D /* CategoryView.swift */,
-				6762647D2973D2670014D092 /* TestRealmAlert.swift */,
-				6762647F2973D2A40014D092 /* TestRealmView.swift */,
 			);
 			path = CategoryView;
 			sourceTree = "<group>";
@@ -136,6 +142,22 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
+		67626487297E67B80014D092 /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				67626488297E67CA0014D092 /* UserDefaults.swift */,
+			);
+			path = UserDefault;
+			sourceTree = "<group>";
+		};
+		6762648A297E69A90014D092 /* CategoryManager */ = {
+			isa = PBXGroup;
+			children = (
+				6762648B297E69BE0014D092 /* CategoryManager.swift */,
+			);
+			path = CategoryManager;
+			sourceTree = "<group>";
+		};
 		6772F04A294638F700F0B7DA /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +186,8 @@
 		67C3F190293657DB00D2D9D7 /* AAMenu */ = {
 			isa = PBXGroup;
 			children = (
+				6762648A297E69A90014D092 /* CategoryManager */,
+				67626487297E67B80014D092 /* UserDefault */,
 				67C3F191293657DB00D2D9D7 /* AppDelegate.swift */,
 				67C3F193293657DB00D2D9D7 /* SceneDelegate.swift */,
 				6772F04A294638F700F0B7DA /* Realm */,
@@ -202,6 +226,7 @@
 				6762645E294DD7F90014D092 /* RxCocoa */,
 				67626460294DD7F90014D092 /* RxSwift */,
 				67626485297B17AE0014D092 /* RxRealm */,
+				6762648E297E74910014D092 /* DropDown */,
 			);
 			productName = AAMenu;
 			productReference = 67C3F18E293657DB00D2D9D7 /* AAMenu.app */;
@@ -236,6 +261,7 @@
 				6772F04B294639A100F0B7DA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				6762645D294DD7F90014D092 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				67626484297B17AE0014D092 /* XCRemoteSwiftPackageReference "RxRealm" */,
+				6762648D297E74910014D092 /* XCRemoteSwiftPackageReference "DropDown" */,
 			);
 			productRefGroup = 67C3F18F293657DB00D2D9D7 /* Products */;
 			projectDirPath = "";
@@ -268,11 +294,13 @@
 				67C3F19C293657DB00D2D9D7 /* AAMenu.xcdatamodeld in Sources */,
 				674CE3672944923E008B2D6D /* BaseView.swift in Sources */,
 				676264782972A9270014D092 /* MenuData.swift in Sources */,
+				67626489297E67CA0014D092 /* UserDefaults.swift in Sources */,
 				674CE3742944983B008B2D6D /* CategoryView.swift in Sources */,
 				674CE36F294497D1008B2D6D /* MenuListView.swift in Sources */,
 				674CE36529449217008B2D6D /* MainView.swift in Sources */,
 				674CE36A2944970F008B2D6D /* CategoryCell.swift in Sources */,
 				67626482297B0B870014D092 /* RealmManager.swift in Sources */,
+				6762648C297E69BE0014D092 /* CategoryManager.swift in Sources */,
 				674CE36C29449715008B2D6D /* MenuCell.swift in Sources */,
 				676264802973D2A50014D092 /* TestRealmView.swift in Sources */,
 				6762647C2972BC0F0014D092 /* CategoryCollectionViewLayout.swift in Sources */,
@@ -524,6 +552,14 @@
 				kind = branch;
 			};
 		};
+		6762648D297E74910014D092 /* XCRemoteSwiftPackageReference "DropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AssistoLab/DropDown";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6772F04B294639A100F0B7DA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -554,6 +590,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 67626484297B17AE0014D092 /* XCRemoteSwiftPackageReference "RxRealm" */;
 			productName = RxRealm;
+		};
+		6762648E297E74910014D092 /* DropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6762648D297E74910014D092 /* XCRemoteSwiftPackageReference "DropDown" */;
+			productName = DropDown;
 		};
 		6772F04C294639A100F0B7DA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

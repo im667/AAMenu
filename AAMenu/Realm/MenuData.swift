@@ -13,16 +13,19 @@ class MenuData: Object {
     @Persisted var menuName = ""
     @Persisted var price = ""
     @Persisted var isHot = false
+    @Persisted var category = ""
     @Persisted var menuDatail : List<MenuDetailData>
     
     @Persisted(primaryKey: true) var _id: ObjectId
     
-    convenience init(menuName: String, price: String, isHot: Bool, _id: ObjectId) {
+    convenience init(menuName: String, price: String, isHot: Bool,category:String, _id: ObjectId) {
         self.init()
         
         self.menuName = menuName
         self.price = price
         self.isHot = isHot
+        self.category = category
+
         self.menuDatail.append(objectsIn: menuDatail)
     }
 }

@@ -3,4 +3,178 @@
    uuid = "1DF6B433-0E18-4184-AB0A-289F8FA07174"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94E07647-692B-4D33-ACFA-FCB515710F73"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AAMenu/Main/TestRealmAlert.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "TestRealmAlert"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "94E07647-692B-4D33-ACFA-FCB515710F73 - 40cd460112757e42"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AAMenu.TestRealmAlert.imagePath.getter : Swift.String"
+                  moduleName = "AAMenu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwon-ohyeon/Desktop/Private/AAMENU/AAMenu/AAMenu/Main/TestRealmAlert.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "94E07647-692B-4D33-ACFA-FCB515710F73 - 3e2887c199ee6e56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AAMenu.TestRealmAlert.imagePath.setter : Swift.String"
+                  moduleName = "AAMenu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwon-ohyeon/Desktop/Private/AAMENU/AAMenu/AAMenu/Main/TestRealmAlert.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "94E07647-692B-4D33-ACFA-FCB515710F73 - ab72dbf298260a47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AAMenu.TestRealmAlert.imagePath.modify : Swift.String"
+                  moduleName = "AAMenu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwon-ohyeon/Desktop/Private/AAMENU/AAMenu/AAMenu/Main/TestRealmAlert.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "94E07647-692B-4D33-ACFA-FCB515710F73 - 67f11b8fc637d656"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AAMenu.TestRealmAlert.imagePath.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "AAMenu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwon-ohyeon/Desktop/Private/AAMENU/AAMenu/AAMenu/Main/TestRealmAlert.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "94E07647-692B-4D33-ACFA-FCB515710F73 - 9f76c0e757c617fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AAMenu.TestRealmAlert.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; AAMenu.TestRealmAlert"
+                  moduleName = "AAMenu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwon-ohyeon/Desktop/Private/AAMENU/AAMenu/AAMenu/Main/TestRealmAlert.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "94E07647-692B-4D33-ACFA-FCB515710F73 - 5d755c11d3377e14"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AAMenu.TestRealmAlert.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;AAMenu.TestRealmAlert&gt;"
+                  moduleName = "AAMenu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwon-ohyeon/Desktop/Private/AAMENU/AAMenu/AAMenu/Main/TestRealmAlert.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "228">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE4546E6-DDD2-466A-8142-79A38C0D8ABB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AAMenu/CustomView/MainListView/MenuCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "data"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E242A3FD-7DF6-4BBA-984E-E49E6E6CC76D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AAMenu/Main/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1FCF8B5D-8B3C-4963-9BDC-4FDA6F21B796"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AAMenu/Main/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C1E065A4-A5CD-46EA-9DAA-42800ECBDD24"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AAMenu/Main/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "rxBind()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

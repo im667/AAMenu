@@ -13,9 +13,11 @@ class MenuListView: BaseView {
     var mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 200, bottom: 0, right: 200)
+        layout.itemSize = CGSize(width: 200, height: 282.8)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .black
+        cv.alwaysBounceVertical = true
         return cv
     }()
     

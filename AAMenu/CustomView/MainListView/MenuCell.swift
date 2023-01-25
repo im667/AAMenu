@@ -12,9 +12,35 @@ class MenuCell:UICollectionViewCell {
     
     static let identifier = String(describing:MenuCell.self)
     
+    var data: MenuData? {
+        didSet {
+        
+        }
+    }
+    
+    var imageView: UIImageView = {
+       let view = UIImageView()
+        view.backgroundColor = .green
+        return view
+    }()
+    
     var menuName: UILabel = {
        let lb = UILabel()
-        lb.font = .systemFont(ofSize: 52, weight: .regular)
+        lb.font = .systemFont(ofSize: 10, weight: .regular)
+        lb.textColor = .white
+        return lb
+    }()
+    
+    var price: UILabel = {
+        let lb = UILabel()
+        lb.font = .systemFont(ofSize: 10, weight: .regular)
+        lb.textColor = .white
+        return lb
+    }()
+    
+    var category : UILabel = {
+        let lb = UILabel()
+        lb.font = .systemFont(ofSize: 10, weight: .regular)
         lb.textColor = .white
         return lb
     }()
@@ -29,14 +55,33 @@ class MenuCell:UICollectionViewCell {
     }
     
     func setUI(){
-        contentView.addSubview(menuName)
+        [imageView,menuName,price,category].forEach { view in
+            self.addSubview(view)
+        }
         setConstraints()
     }
     
     func setConstraints(){
+        imageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(150)
+            $0.width.equalTo(150)
+        }
         menuName.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(64)
+            $0.top.equalTo(imageView.snp.bottom)
+            $0.height.equalTo(20)
+            $0.centerX.equalToSuperview()
+        }
+        
+        price.snp.makeConstraints {
+            $0.top.equalTo(menuName.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+            
+        }
+        category.snp.makeConstraints {
+            $0.top.equalTo(price.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
             
         }
     }

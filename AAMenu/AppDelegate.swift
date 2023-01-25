@@ -7,15 +7,33 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+      
+        migraionRealm()
         return true
+    }
+    
+    func migraionRealm(){
+        let updateVersion: UInt64 = 4
+    
+        let config = Realm.Configuration(
+                    schemaVersion: updateVersion,
+                    migrationBlock: { migration, oldSchemaVersion in
+                        if oldSchemaVersion < updateVersion {
+                   
+                            migration.enumerateObjects(ofType: MenuData.className()) { oldObject, newObject in
+                                newObject!["category"] = ""
+                            }
+                        }
+                    }
+                )
+       
+                Realm.Configuration.defaultConfiguration = config
     }
 
     // MARK: UISceneSession Lifecycle
