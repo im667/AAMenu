@@ -15,8 +15,8 @@ class MainViewController: UIViewController {
     
     var mainView = MainView()
     var dataSource = [String]()
-    var menuData: Results<MenuData>!
     var viewModel = MainViewModel()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -25,13 +25,18 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCollectionView()
-        setMenuData()
-        setCategoryData()
+      
+        
         mainView.backgroundColor = .white
         mainView.button.addTarget(self, action: #selector(openTestAlert), for: .touchUpInside)
-        viewModel.input.filterType.accept(["coffee"])
-        rxBind()
+     
+        DispatchQueue.main.async {
+            self.setCategoryData()
+            self.viewModel.input.filterType.accept(["coffee"])
+            self.setCollectionView()
+            self.rxBind()
+        }
+       
     }
     
     @objc func openTestAlert(){
@@ -42,35 +47,32 @@ class MainViewController: UIViewController {
     }
     
     func rxBind(){
-        mainView.menuList.mainCollectionView.rx.setDelegate(self).disposed(by: DisposeBag())
+      
         viewModel.output.menuList
+            .asObservable()
             .subscribe(onNext: {
+                print($0.count)
                 if $0.isEmpty {
                     print("Empty")
                 } else {
-                    print("USE PAGE")
+                    print("USALBE PAGE")
                 }
             })
-            .disposed(by: DisposeBag())
+            .disposed(by: disposeBag)
         
         viewModel.output.menuList
-            .asObservable()
-            .bind(to: mainView.menuList.mainCollectionView.rx.items) { [weak self] (cv, row, items) in
-                let cell : MenuCell = cv.dequeueReusableCell(withReuseIdentifier: MenuCell.identifier, for: IndexPath(row: row, section: 0)) as! MenuCell
-                cell.data = items
-                cell.menuName.text = items.menuName
-                cell.price.text = items.price
-                cell.category.text = items.category
-                cell.imageView.image = self!.loadImageFromDocumentDirectory(imageName: "\(items._id).png")
-                
-                return cell
-            }
-            .disposed(by: DisposeBag())
+            .bind(to: mainView.menuList.mainCollectionView.rx.items(
+                cellIdentifier: MenuCell.identifier)) {
+                    (index, data, cell) in
+                    guard let cell : MenuCell = cell as? MenuCell else { return }
+                    cell.data = data
+                    cell.imageView.image = self.loadImageFromDocumentDirectory(imageName: "\(data._id).png")
+                }
+                .disposed(by: disposeBag)
+        
+        mainView.menuList.mainCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
-    func setMenuData(){
-        menuData = try!Realm().objects(MenuData.self)
-    }
     
     func setCategoryData(){
         dataSource = CategoryManager.shared.getCategory()
@@ -103,9 +105,14 @@ class MainViewController: UIViewController {
        }
 }
 
+
 extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+    
+   
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let cateCV = mainView.category.categoryCollectionView
+        let mainCV = mainView.menuList.mainCollectionView
    
         if collectionView == cateCV {
             return dataSource.count
@@ -113,10 +120,8 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         return 1
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cateCV = mainView.category.categoryCollectionView
-        
         
         if collectionView == cateCV {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
@@ -134,10 +139,11 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
   
         
         if collectionView == cateCV {
-            let cell = collectionView.cellForItem(at: indexPath)
-            let filter = self.dataSource[indexPath.row]
-            
-            viewModel.input.filterType.accept([filter])
+           
+            let filterItem = self.dataSource[indexPath.row]
+            var filter = [String]()
+            filter.append(filterItem)
+            viewModel.input.filterType.accept(filter)
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             mainCV.reloadData()
         }

@@ -14,7 +14,12 @@ class MenuCell:UICollectionViewCell {
     
     var data: MenuData? {
         didSet {
-        
+            guard let data = data else { return }
+            menuName.text = data.menuName
+            print("MENUNAME:",data.menuName)
+            price.text = data.price
+            category.text = data.category
+           
         }
     }
     
