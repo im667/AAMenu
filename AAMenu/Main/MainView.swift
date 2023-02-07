@@ -22,7 +22,8 @@ class MainView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .darkGray
+        
+        self.backgroundColor = .black
     }
     
     required init?(coder: NSCoder) {

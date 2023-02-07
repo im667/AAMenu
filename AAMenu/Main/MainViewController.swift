@@ -25,31 +25,32 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        
-        mainView.backgroundColor = .white
-        mainView.button.addTarget(self, action: #selector(openTestAlert), for: .touchUpInside)
      
+        mainView.button.addTarget(self, action: #selector(openTestAlert), for: .touchUpInside)
+        self.setCollectionView()
+        self.setCategoryData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
         DispatchQueue.main.async {
-            self.setCategoryData()
             self.viewModel.input.filterType.accept(["coffee"])
-            self.setCollectionView()
             self.rxBind()
         }
-       
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     @objc func openTestAlert(){
-        let vc = TestRealmAlert()
-        
-        vc.modalTransitionStyle = .coverVertical
-        self.present(vc, animated: true)
+        let vc = AddMenuVC()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func rxBind(){
       
         viewModel.output.menuList
-            .asObservable()
             .subscribe(onNext: {
                 print($0.count)
                 if $0.isEmpty {
@@ -59,7 +60,8 @@ class MainViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-        
+        mainView.menuList.mainCollectionView.delegate = nil
+        mainView.menuList.mainCollectionView.dataSource = nil
         viewModel.output.menuList
             .bind(to: mainView.menuList.mainCollectionView.rx.items(
                 cellIdentifier: MenuCell.identifier)) {
@@ -70,7 +72,6 @@ class MainViewController: UIViewController {
                 }
                 .disposed(by: disposeBag)
         
-        mainView.menuList.mainCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
     
@@ -83,7 +84,7 @@ class MainViewController: UIViewController {
         mainView.category.categoryCollectionView.dataSource = self
         mainView.category.categoryCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
         
-   
+        mainView.menuList.mainCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         mainView.menuList.mainCollectionView.register(MenuCell.self, forCellWithReuseIdentifier: MenuCell.identifier)
     }
     

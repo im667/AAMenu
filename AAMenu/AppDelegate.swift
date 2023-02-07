@@ -15,6 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
         migraionRealm()
+       
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = .clear
+        UINavigationBar.appearance().clipsToBounds = false
+        UINavigationBar.appearance().backgroundColor = .black
+         
         return true
     }
     
