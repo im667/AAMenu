@@ -35,6 +35,11 @@
 		676264A2298FC68D0014D092 /* UserInputOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676264A1298FC68D0014D092 /* UserInputOptionCell.swift */; };
 		676264A4298FD4370014D092 /* UserInputPriceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676264A3298FD4370014D092 /* UserInputPriceManager.swift */; };
 		676264A6298FD4F20014D092 /* PriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676264A5298FD4F20014D092 /* PriceModel.swift */; };
+		676264A829975D9B0014D092 /* UserInputPriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676264A729975D9B0014D092 /* UserInputPriceViewModel.swift */; };
+		676264AA29A1F54A0014D092 /* PriceAddCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676264A929A1F54A0014D092 /* PriceAddCustomView.swift */; };
+		676264AD29A204F40014D092 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 676264AC29A204F40014D092 /* Toast */; };
+		676264AF29A2050D0014D092 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676264AE29A2050D0014D092 /* BaseViewController.swift */; };
+		676264B129A226520014D092 /* AddDetailPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676264B029A226520014D092 /* AddDetailPhotoView.swift */; };
 		6772F04D294639A100F0B7DA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6772F04C294639A100F0B7DA /* Realm */; };
 		6772F04F294639A100F0B7DA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6772F04E294639A100F0B7DA /* RealmSwift */; };
 		67C3F192293657DB00D2D9D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C3F191293657DB00D2D9D7 /* AppDelegate.swift */; };
@@ -68,6 +73,10 @@
 		676264A1298FC68D0014D092 /* UserInputOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputOptionCell.swift; sourceTree = "<group>"; };
 		676264A3298FD4370014D092 /* UserInputPriceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputPriceManager.swift; sourceTree = "<group>"; };
 		676264A5298FD4F20014D092 /* PriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceModel.swift; sourceTree = "<group>"; };
+		676264A729975D9B0014D092 /* UserInputPriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputPriceViewModel.swift; sourceTree = "<group>"; };
+		676264A929A1F54A0014D092 /* PriceAddCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAddCustomView.swift; sourceTree = "<group>"; };
+		676264AE29A2050D0014D092 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		676264B029A226520014D092 /* AddDetailPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailPhotoView.swift; sourceTree = "<group>"; };
 		67C3F18E293657DB00D2D9D7 /* AAMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C3F191293657DB00D2D9D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67C3F193293657DB00D2D9D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +95,7 @@
 				67626486297B17AE0014D092 /* RxRealm in Frameworks */,
 				6772F04F294639A100F0B7DA /* RealmSwift in Frameworks */,
 				6772F04D294639A100F0B7DA /* Realm in Frameworks */,
+				676264AD29A204F40014D092 /* Toast in Frameworks */,
 				67626461294DD7F90014D092 /* RxSwift in Frameworks */,
 				6762648F297E74910014D092 /* DropDown in Frameworks */,
 				67626497298BDF5E0014D092 /* RxKeyboard in Frameworks */,
@@ -156,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				674CE3662944923E008B2D6D /* BaseView.swift */,
+				676264AE29A2050D0014D092 /* BaseViewController.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -200,6 +211,8 @@
 			children = (
 				6762649C298E3FA40014D092 /* BasicPriceCell.swift */,
 				676264A1298FC68D0014D092 /* UserInputOptionCell.swift */,
+				676264A929A1F54A0014D092 /* PriceAddCustomView.swift */,
+				676264B029A226520014D092 /* AddDetailPhotoView.swift */,
 			);
 			path = BasicPriceListTable;
 			sourceTree = "<group>";
@@ -209,6 +222,7 @@
 			children = (
 				6762647D2973D2670014D092 /* AddMenuVC.swift */,
 				6762649F298E461B0014D092 /* BasicPriceViewModel.swift */,
+				676264A729975D9B0014D092 /* UserInputPriceViewModel.swift */,
 				6762647F2973D2A40014D092 /* AddMenuView.swift */,
 			);
 			path = Edit;
@@ -286,6 +300,7 @@
 				67626485297B17AE0014D092 /* RxRealm */,
 				6762648E297E74910014D092 /* DropDown */,
 				67626496298BDF5E0014D092 /* RxKeyboard */,
+				676264AC29A204F40014D092 /* Toast */,
 			);
 			productName = AAMenu;
 			productReference = 67C3F18E293657DB00D2D9D7 /* AAMenu.app */;
@@ -322,6 +337,7 @@
 				67626484297B17AE0014D092 /* XCRemoteSwiftPackageReference "RxRealm" */,
 				6762648D297E74910014D092 /* XCRemoteSwiftPackageReference "DropDown" */,
 				67626495298BDF5E0014D092 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
+				676264AB29A204F40014D092 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 67C3F18F293657DB00D2D9D7 /* Products */;
 			projectDirPath = "";
@@ -351,9 +367,11 @@
 			files = (
 				67C3F196293657DB00D2D9D7 /* MainViewController.swift in Sources */,
 				67C3F192293657DB00D2D9D7 /* AppDelegate.swift in Sources */,
+				676264B129A226520014D092 /* AddDetailPhotoView.swift in Sources */,
 				67626494298BD4950014D092 /* extension + UIViewController.swift in Sources */,
 				67C3F19C293657DB00D2D9D7 /* AAMenu.xcdatamodeld in Sources */,
 				674CE3672944923E008B2D6D /* BaseView.swift in Sources */,
+				676264A829975D9B0014D092 /* UserInputPriceViewModel.swift in Sources */,
 				676264A6298FD4F20014D092 /* PriceModel.swift in Sources */,
 				676264782972A9270014D092 /* MenuData.swift in Sources */,
 				67626489297E67CA0014D092 /* UserDefaults.swift in Sources */,
@@ -369,12 +387,14 @@
 				6762648C297E69BE0014D092 /* CategoryManager.swift in Sources */,
 				674CE36C29449715008B2D6D /* MenuCell.swift in Sources */,
 				676264802973D2A50014D092 /* AddMenuView.swift in Sources */,
+				676264AA29A1F54A0014D092 /* PriceAddCustomView.swift in Sources */,
 				6762647C2972BC0F0014D092 /* CategoryCollectionViewLayout.swift in Sources */,
 				676264A2298FC68D0014D092 /* UserInputOptionCell.swift in Sources */,
 				6762647E2973D2670014D092 /* AddMenuVC.swift in Sources */,
 				67C3F194293657DB00D2D9D7 /* SceneDelegate.swift in Sources */,
 				676264A4298FD4370014D092 /* UserInputPriceManager.swift in Sources */,
 				67626463294DDC4E0014D092 /* MainViewModel.swift in Sources */,
+				676264AF29A2050D0014D092 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +656,14 @@
 				kind = branch;
 			};
 		};
+		676264AB29A204F40014D092 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6772F04B294639A100F0B7DA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -676,6 +704,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 67626495298BDF5E0014D092 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
 			productName = RxKeyboard;
+		};
+		676264AC29A204F40014D092 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 676264AB29A204F40014D092 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		6772F04C294639A100F0B7DA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

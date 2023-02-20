@@ -124,7 +124,7 @@ class AddMenuView:BaseView {
     var optionSwitch: Bool? {
         didSet {
             guard let optionSwitch = optionSwitch else { return }
-            setOptionPriceContainer(isOn: optionSwitch)
+              setOptionPriceContainer(isOn: optionSwitch)
         }
     }
     
@@ -134,7 +134,7 @@ class AddMenuView:BaseView {
                 $0.height.equalTo(40)
             }
             basicPriceContainer.snp.updateConstraints {
-                $0.height.equalTo(320)
+                $0.height.equalTo(200)
             }
           
             offOptionButton.setImage(UIImage(named: "radio_Off"), for: .normal)
@@ -154,8 +154,8 @@ class AddMenuView:BaseView {
         }
         basicPriceContainer.isHidden = !isOn
         priceSettingStackView.isHidden = !isOn
-        basicPriceTableView.isHidden = !isOn
         selectSettingButton.isHidden = !isOn
+       
     }
     
     var priceSwitch: Bool = true {
@@ -180,12 +180,13 @@ class AddMenuView:BaseView {
             basicPriceSettingButton.backgroundColor = .darkGray
             userInputPriceSettingButton.backgroundColor = .primaryColor
             userInputPriceContainer.snp.updateConstraints {
-                $0.height.equalTo(320)
+                $0.height.equalTo(280)
             }
        
         }
         basicPriceContainer.isHidden = !isOn
         userInputPriceContainer.isHidden = isOn
+        addPriceView.isHidden = isOn
     }
     
     
@@ -304,6 +305,13 @@ class AddMenuView:BaseView {
         return view
     }()
     
+    var addPriceView: PriceAddCustomView = {
+       let view = PriceAddCustomView()
+        view.backgroundColor = .clear
+        view.isHidden = true
+        return view
+    }()
+    
     var userInputPriceTableView:UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
@@ -342,7 +350,9 @@ class AddMenuView:BaseView {
             basicPriceContainer.addSubview($0)
         }
         
-        userInputPriceContainer.addSubview(userInputPriceTableView)
+        [addPriceView,userInputPriceTableView].forEach {
+            userInputPriceContainer.addSubview($0)
+        }
         
         [titleLabel,defaultContainerView,offOptionTouchArea,onOptionTouchArea,priceSettingStackView,basicPriceContainer,userInputPriceContainer,addButton].forEach {
             contentView.addSubview($0)
@@ -439,7 +449,7 @@ class AddMenuView:BaseView {
         onOptionButton.snp.makeConstraints {
             $0.width.height.equalTo(32)
         }
-    
+        
         offOptionTouchArea.snp.makeConstraints {
             $0.top.equalTo(defaultContainerView.snp.bottom).offset(52)
             $0.leading.equalTo(defaultContainerView.snp.leading)
@@ -482,8 +492,14 @@ class AddMenuView:BaseView {
             $0.height.equalTo(0)
         }
         
+        addPriceView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(40)
+        }
+        
         userInputPriceTableView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(addPriceView.snp.bottom).offset(16)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
         selectSettingButton.snp.makeConstraints {

@@ -19,7 +19,7 @@ class BasicPriceViewModel :BaseViewModel,ViewModelType {
     }
     
     struct Output{
-        let priceList = BehaviorRelay<[PriceListType]>(value: [PriceListType(priceType: "")])
+        let priceList = BehaviorRelay<[PriceListType]>(value: [PriceListType(name: "", price: "")])
     }
     
     override init() {
@@ -27,12 +27,11 @@ class BasicPriceViewModel :BaseViewModel,ViewModelType {
   
     }
 
-    override func rxBind(){
+    override func bindRx(){
         input.priceType
-            .subscribe(with:self,onNext: { owner, priceType in
+            .subscribe(with: self,onNext: {owner, priceType in
                 let price = priceType.basicList
                 owner.output.priceList.accept(price)
-                
             })
             .disposed(by: disposeBag)
     }

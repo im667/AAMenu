@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "option_remove_button.png",
+      "filename" : "remove_button.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "option_remove_button@2x.png",
+      "filename" : "remove_button@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "option_remove_button@3x.png",
+      "filename" : "remove_button@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

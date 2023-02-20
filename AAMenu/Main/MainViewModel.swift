@@ -24,14 +24,14 @@ class BaseViewModel : NSObject {
 
     override init() {
         super.init()
-        rxBind()
+        bindRx()
     }
 
     deinit {
-        print("> deinit VM - \(type(of: self))")
+       
     }
 
-    func rxBind() {
+    func bindRx() {
     }
 }
 
@@ -55,7 +55,7 @@ class MainViewModel:BaseViewModel,ViewModelType {
     }
 
     
-    override func rxBind(){
+    override func bindRx(){
         input.filterType
             .subscribe(with:self,onNext: { owner, filter in
                 let menuList = RealmManager.shared.getFilterMenu(category: filter).toArray()

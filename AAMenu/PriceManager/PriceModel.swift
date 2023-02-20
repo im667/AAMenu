@@ -7,7 +7,4 @@
 
 import Foundation
 
-struct PriceModel {
-    var name: String
-    var price: String
-}
+

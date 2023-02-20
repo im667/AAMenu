@@ -14,8 +14,11 @@ struct BasicPrice {
 }
 
 struct PriceListType {
-    var priceType:String
+    var name: String
+    var price: String
 }
+
+
 
 enum BasicPriceType:CaseIterable {
     case SizeUp
@@ -31,7 +34,7 @@ enum BasicPriceType:CaseIterable {
         case .HotIce:
             return "Hot/Ice"
         case .Size:
-            return "SIZE"
+            return "Size"
         }
     }
     
@@ -39,17 +42,17 @@ enum BasicPriceType:CaseIterable {
         
         switch self {
         case .SizeUp:
-            return BasicPrice(basicTypeName: "SizeUp",
-                              basicList: [PriceListType(priceType: "SizeUp")])
+            return BasicPrice(basicTypeName: "Size-Up",
+                              basicList: [PriceListType(name: "SizeUp", price: "")])
         case .HotIce:
             return BasicPrice(basicTypeName: "Hot/Ice",
-                              basicList: [PriceListType( priceType: "Hot"),
-                                         PriceListType(priceType: "Ice")])
+                              basicList: [PriceListType(name: "HOT", price: ""),
+                                         PriceListType(name: "ICE", price: "")])
         case .Size:
             return BasicPrice(basicTypeName: "Size",
-                              basicList: [PriceListType(priceType: "Small"),
-                                         PriceListType(priceType: "Medium"),
-                                         PriceListType(priceType: "Large")])
+                              basicList: [PriceListType(name: "S", price: ""),
+                                         PriceListType(name: "M", price: ""),
+                                         PriceListType(name: "L", price: "")])
         }
     }
     

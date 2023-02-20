@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class BasicPriceCell: UITableViewCell {
     
@@ -14,7 +15,7 @@ class BasicPriceCell: UITableViewCell {
     var data: PriceListType? {
         didSet {
             guard let data = data else { return }
-            basicSettingLabel.text = data.priceType
+            basicSettingLabel.text = data.name
         }
     }
     

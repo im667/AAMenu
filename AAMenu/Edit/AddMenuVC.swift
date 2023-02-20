@@ -14,7 +14,47 @@ import DropDown
 import AVFoundation
 import Photos
 
-class AddMenuVC: UIViewController, UIScrollViewDelegate {
+protocol UserInputPriceDelegate {
+    func onAdd(name:String,price:String)
+    func onRemove(index:Int)
+}
+
+protocol KeyBoardShowHideDelegate{
+    func keyboardShowUpdateView()
+    func keyboardHideUpdateView()
+}
+
+enum OptionMode {
+    case basic
+    case userInput
+}
+
+extension AddMenuVC: UserInputPriceDelegate {
+    
+    func onAdd(name: String, price: String) {
+        if name.isEmpty || price.isEmpty {
+            showToast(message: "이름과 가격 모두 입력해주세요.(다국어)")
+            return
+        }
+        
+        if userInputPriceList.count < 5 {
+            userInputPriceList.append(PriceListType(name: name, price: price))
+            userInputPriceViewModel.input.userInputList.accept(userInputPriceList)
+            return
+        } else {
+            showToast(message: "5개 이상 입력할 수 없습니다.(다국어)")
+            return
+        }
+    }
+    
+    func onRemove(index:Int) {
+        print("remove")
+        userInputPriceList.remove(at: index)
+        userInputPriceViewModel.input.userInputList.accept(userInputPriceList)
+    }
+}
+
+class AddMenuVC: BaseViewController, UIScrollViewDelegate {
     
     let mainView = AddMenuView()
     let categoryDropDown = DropDown()
@@ -23,9 +63,12 @@ class AddMenuVC: UIViewController, UIScrollViewDelegate {
     var imagePath = ""
     var basicPriceDefault = [String]()
     var basicPriceViewModel = BasicPriceViewModel()
+    var userInputPriceViewModel = UserInputPriceViewModel()
     var categoryItem = String()
     var selectedBasicPrice = String()
-    var disposeBag = DisposeBag()
+
+    var optionMode: OptionMode = .basic
+    
     var isBasicPrice : Bool = true {
         didSet {
             mainView.priceSwitch = isBasicPrice
@@ -37,6 +80,8 @@ class AddMenuVC: UIViewController, UIScrollViewDelegate {
             mainView.optionSwitch = isOptionPrice
         }
     }
+    
+    var userInputPriceList : [PriceListType] = []
     
     override func loadView() {
         super.loadView()
@@ -89,6 +134,8 @@ class AddMenuVC: UIViewController, UIScrollViewDelegate {
         mainView.userInputPriceTableView.register(UserInputOptionCell.self, forCellReuseIdentifier: UserInputOptionCell.identifier)
         mainView.userInputPriceTableView.isHidden = true
         imagePicker.delegate = self
+        mainView.addPriceView.delegate = self
+        mainView.addPriceView.keyboardDelegate = self
         
        
     }
@@ -101,45 +148,65 @@ class AddMenuVC: UIViewController, UIScrollViewDelegate {
     
     func setRx(){
 
-
         mainView.basicPriceTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+
+        mainView.userInputPriceTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
         basicPriceViewModel.output.priceList
             .asObservable()
-            .bind(to: mainView.basicPriceTableView.rx.items) { [weak self] (tv, row, item) in
+            .bind(to: mainView.basicPriceTableView.rx.items)  { [weak self] (tv, row, item) in
                 let cell: BasicPriceCell = tv.dequeueReusableCell(withIdentifier: BasicPriceCell.identifier, for: IndexPath(row: row, section: 0)) as! BasicPriceCell
-                cell.selectionStyle = .none
+                
                 cell.data = item
-                print(item.priceType)
+                cell.selectionStyle = .none
                 
                 cell.basicPriceTextField.rx.controlEvent([.editingDidBegin]).subscribe{ _ in
-                    self?.mainView.addButton.snp.updateConstraints { make in
-                        make.bottom.equalToSuperview().offset(-500)
+                self?.mainView.addButton.snp.updateConstraints { make in
+                    make.bottom.equalToSuperview().offset(-500)
                     }
-        
                 }.disposed(by: self!.disposeBag)
-        
+                
                 cell.basicPriceTextField.rx.controlEvent([.editingDidEnd]).subscribe{ _ in
-                    self?.mainView.addButton.snp.updateConstraints { make in
-                        make.bottom.equalToSuperview().offset(-52)
-                    }
-        
+                self?.mainView.addButton.snp.updateConstraints { make in
+                    make.bottom.equalToSuperview().offset(-52)
+                }
                 }.disposed(by: self!.disposeBag)
-               
+                
                 return cell
             }
             .disposed(by: disposeBag)
         
+        // 마지막 셀 컨트롤
+        //            .map { prices in
+        //                    let prices = prices + [PriceListType(name: "", price: "")]
+        //                return prices.enumerated().map { (index, price) in (price, index == prices.count - 1) }
+        //                }
+
+        userInputPriceViewModel.output.priceList
+            .bind(to: mainView.userInputPriceTableView.rx.items) { [weak self](tv, row, element) in
+                let cell: UserInputOptionCell = tv.dequeueReusableCell(withIdentifier: UserInputOptionCell.identifier, for: IndexPath(row: row, section: 0)) as! UserInputOptionCell
+              
+                cell.index = row
+                cell.data = element
+                cell.handleCellButton.setImage(UIImage(named: "option_remove_button"), for: .normal)
+                cell.delegate = self
+                cell.selectionStyle = .none
+                    return cell
+                }
+            .disposed(by: disposeBag)
     }
     
     @objc func onBasicPrice(){
         isBasicPrice = true
-      
+        optionMode = .basic
     }
     
     @objc func onUserInputPrice(){
         isBasicPrice = false
-     
+        mainView.userInputPriceTableView.isHidden = false
+        optionMode = .userInput
     }
     
     @objc func offOption(){
@@ -264,7 +331,32 @@ extension AddMenuVC: UIImagePickerControllerDelegate, UINavigationControllerDele
 }
 
 extension AddMenuVC:UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 36
     }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if tableView == mainView.userInputPriceTableView {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: UserInputOptionCell.identifier, for: indexPath) as? UserInputOptionCell else  { return }
+         
+            cell.disposeBag = disposeBag
+        }
+       
+    }
+}
+
+extension AddMenuVC: KeyBoardShowHideDelegate {
+    func keyboardShowUpdateView() {
+        self.mainView.addButton.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-500)
+        }
+    }
+    
+    func keyboardHideUpdateView() {
+        self.mainView.addButton.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-52)
+        }
+    }
+    
 }

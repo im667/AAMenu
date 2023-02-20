@@ -7,47 +7,78 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class UserInputOptionCell:UITableViewCell {
     
     static let identifier = String(describing: UserInputOptionCell.self)
     
-    var userInputNameTextField: UITextField = {
-        let textField = UITextField()
-        textField.layer.cornerRadius = 8
-        textField.backgroundColor = .white
-        textField.placeholder = "  Option Name"
-         return textField
-    }()
+    var disposeBag = DisposeBag()
+    var index : Int?
     
-    var userInputPriceTextField: UITextField = {
-        let textField = UITextField()
-        textField.layer.cornerRadius = 8
-        textField.backgroundColor = .white
-        textField.placeholder = "  Option Price"
-         return textField
-    }()
+    var data: PriceListType? {
+        didSet {
+            userInputNameLabel.text = data?.name
+            userInputPriceLabel.text = data?.price
+        }
+    }
+   
+
     
-    var removeButton: UIButton = {
+    var delegate:UserInputPriceDelegate?
+ 
+    
+    var handleCellButton: UIButton = {
        let btn = UIButton()
         btn.layer.cornerRadius = 4
         btn.setImage(UIImage(named: "option_remove_button"), for: .normal)
         return btn
     }()
     
+    var userInputNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12,weight: .regular)
+        label.textColor = .lightGray
+        label.textAlignment = .left
+        label.text = "test"
+         return label
+    }()
+
+ 
+    var userInputPriceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12,weight: .regular)
+        label.textColor = .lightGray
+        label.textAlignment = .left
+        label.text = "test"
+         return label
+    }()
+    
+    
     var settingStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.spacing = 16
         stackView.distribution = .fill
         stackView.axis = .horizontal
         return stackView
     }()
     
+    @objc func removeCell(){
+        guard let index = index else { return }
+        delegate?.onRemove(index: index)
+    }
+    
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
+        
         setUI()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+   
     }
     
     required init?(coder: NSCoder) {
@@ -55,9 +86,9 @@ class UserInputOptionCell:UITableViewCell {
     }
     
     func setUI(){
-        
-        [userInputNameTextField,userInputPriceTextField,removeButton].forEach {
-            settingStackView.addSubview($0)
+        handleCellButton.addTarget(self, action: #selector(removeCell), for: .touchUpInside)
+        [userInputNameLabel,userInputPriceLabel,handleCellButton].forEach {
+            settingStackView.addArrangedSubview($0)
         }
         contentView.addSubview(settingStackView)
         setConstraints()
@@ -65,17 +96,18 @@ class UserInputOptionCell:UITableViewCell {
     }
     
     func setConstraints(){
-        userInputNameTextField.snp.makeConstraints {
+        
+        userInputNameLabel.snp.makeConstraints {
             $0.height.equalTo(24)
             $0.width.equalTo(80)
         }
         
-        userInputPriceTextField.snp.makeConstraints {
+        userInputPriceLabel.snp.makeConstraints {
             $0.height.equalTo(24)
             $0.width.equalTo(120)
         }
         
-        removeButton.snp.makeConstraints {
+        handleCellButton.snp.makeConstraints {
             $0.height.equalTo(24)
             $0.width.equalTo(24)
         }
